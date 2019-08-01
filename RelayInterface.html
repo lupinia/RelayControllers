@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  table.redTable {
+    border: 2px solid #A40808;
+    background-color: #EEE7DB;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+  }
+  table.redTable td, table.redTable th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+  }
+  table.redTable tbody td {
+    font-size: 13px;
+  }
+  table.redTable tr:nth-child(even) {
+    background: #F5C8BF;
+  }
+  table.redTable thead {
+    background: #A40808;
+  }
+  table.redTable thead th {
+    font-size: 19px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    border-left: 2px solid #A40808;
+  }
+  table.redTable thead th:first-child {
+    border-left: none;
+  }
+
+  table.redTable tfoot {
+    font-size: 13px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #A40808;
+  }
+  table.redTable tfoot td {
+    font-size: 13px;
+  }
+  table.redTable tfoot .links {
+    text-align: right;
+  }
+  table.redTable tfoot .links a{
+    display: inline-block;
+    background: #FFFFFF;
+    color: #A40808;
+    padding: 2px 8px;
+    border-radius: 5px;
+  }
+
+  </style>
+  <script type="text/javascript">
+  function submitFormAjax(relayNumber)
+  {
+      //alert('I might have sent something, somewhere...Perhaps...');
+      var relayRequest = "/relays/"+relayNumber+"/";
+      //alert(relayRequest)
+      var i = document.createElement("img");
+      i.src = relayRequest;
+  }
+  </script>
+</head>
+<body>
+
+<table class="redTable">
+<thead>
+<tr>
+<th>Blood</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th>Forge</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th>Lights</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td colspan="9">
+</td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td>Front Porch</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(14);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(13);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td>Front Hallway</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(23);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(24);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td>Upstairs Hallway</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(8);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(7);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+</tr>
+<tr>
+<td>GHO Roomba</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(28);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(27);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td>Game Room</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(5);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(6);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td>MB Overhead</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(1);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(2);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+</tr>
+<tr>
+<td>GHO Pantry</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(29);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(30);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td>Bar</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(18);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(17);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td>MB Fan</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(58);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(60);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+</tr>
+<tr>
+<td>GHO Couch</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(62);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(61);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td>Patio</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(37);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(38);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td>MB Closet</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(35);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(36);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+</tr>
+<tr>
+<td>GHO Bookcase</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(16);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(15);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td>Garage</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(12);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(11);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td>MB Bath</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(33);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(54);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+</tr>
+<tr>
+<td>Kitchen Island</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(26);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(25);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td>Porch Outlets</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(9);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(10);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td>MB Bed 1</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(39);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(40);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+</tr>
+<tr>
+<td>Kitchen Overhead</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(22);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(21);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td></td>
+<td></td>
+<td></td>
+<td>MB Bed 2</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(20);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(19);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+</tr>
+<tr>
+<td>Solarium</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(4);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(3);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Office</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(64);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(63);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+</tr>
+<tr>
+<td>Solarium Fans</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(57);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(59);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Rackspace</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(32);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(31);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+</tr>
+<tr>
+<td>Deck</td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(45);return false;"
+>
+
+<input type="submit" value="ON"/>
+</form></td>
+<td><form name="detailsForm"
+      method="post"
+      action="myServlet"
+      onsubmit="submitFormAjax(55);return false;"
+>
+
+<input type="submit" value="OFF"/>
+</form></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
