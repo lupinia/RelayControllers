@@ -17,7 +17,7 @@ command_delay = 0.25
 #		command1:  String, the first command to send, before the delay
 #		command2:  String, the second command to send, after the delay
 #		delay:  Float, optional; if present, this will override the default delay between command1 and command2.
-relays = [{'name':'INVALID RELAY'},
+relays = [{'name':'PLACEHOLDER (0)'},
 	{ #1
 		'name':'Relay 1',
 		'port':'/dev/ttyUSB0',
