@@ -5,7 +5,6 @@
 
 from data import command_delay
 
-import os
 import serial
 import sys
 
