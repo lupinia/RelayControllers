@@ -120,5 +120,55 @@ def get_relay(id, data):
 	
 	return get_relay_fields(data_item)
 
+# Cycle through all known relays and toggle them
+# Parameters:
+#	test_delay:  Amount of time to wait before proceeding to the next relay.  Uses the system default if not specified
+#	live_status:  If True, print the name of each relay as it comes up in the test
+def test_all_relays(live_status=True, test_delay=command_delay):
+	from data import relays
+	test_output('Beginning test of all relays...', live_status)
+	
+	if len(relays) > 0:
+		test_output('%i relays in list, beginning test...' % len(relays), live_status)
+		
+		# Open the serial interface here for greater efficiency
+		ser = get_serial_interface()
+		test_output('Serial interface created.', live_status)
+		
+		for relay in relays:
+			# Step 1:  Grab all the fields we'll need for this relay
+			# Storing the bulk of them in a dictionary means we can use my favorite notation later :)
+			relay_params = {}
+			cur_relay_name, relay_params['port'], relay_params['command1'], relay_params['command2'], relay_params['delay'] = get_relay_fields(relay)
+			
+			# Step 2:  Make sure the fields we need actually exist
+			if relay_params['port'] and relay_params['command1'] and relay_params['command2']:
+				test_output('Testing %s...' % cur_relay_name, live_status)
+				
+				# Time to actually do the commands!
+				# Double-asterisk to send a dictionary as if it were function parameters is one of my favorite things about Python.
+				# I'm not really sure why, it's just so neat!  ^.^
+				relay_command(serial_obj=ser, **relay_params)
+				
+				# Wait a sec before going to the next one
+				# Or a fraction of a sec
+				# Or a bunch of secs
+				# It's actually entirely up to you, I have no idea what you'll set this value to
+				# You could've set it to an entire day between relay tests for all I know!
+				# I mean, I don't know why you'd WANT to do that, but you COULD!
+				sleep(test_delay)
+			
+			else:
+				# Uh oh!  The important fields were blank!  Skipping this one.
+				test_output('Skipping %s due to missing fields' % cur_relay_name, live_status)
+	
+	else:
+		test_output('No relays available in list, nothing to test.', live_status)
+	
+	test_output('Relay test complete!', live_status)
 
+# Saving myself from having to write "if live_status:" a million times in the previous function
+def test_output(message='', live_status=True):
+	if live_status and message:
+		print message
 
