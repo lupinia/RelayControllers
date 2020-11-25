@@ -3,6 +3,8 @@
 #	By Kjatar Tavishen and Natasha L.
 #	github.com/kjatar | github.com/lupinia | www.lupinia.net
 
+from data import command_delay
+
 import os
 import serial
 import sys
@@ -32,7 +34,7 @@ def get_serial_interface():
 #	command2:  The second command to send, after the delay
 #	serial_obj:  If the serial port is already open (such as for bulk operations), pass it here to avoid reinitialization
 #	delay:  Use this parameter to override the default delay between command1 and command2
-def relay_command(port, command1, command2, serial_obj=False, delay=0.25):
+def relay_command(port, command1, command2, serial_obj=False, delay=command_delay):
 	success = False		# Primary return value; True if everything worked
 	error = ''			# Secondary return value, provide info if success == False
 	close_when_complete = False
