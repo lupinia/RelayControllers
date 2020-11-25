@@ -74,7 +74,51 @@ def relay_command(port, command1, command2, serial_obj=False, delay=command_dela
 	
 	return (success, error)
 
+# Check whether the data for a specified relay exists in the data source
+# Returns True if relay exists and has valid data, False otherwise
+# Parameters:
+#	id:  The ID of the relay to check.  Should cast to an integer, and correspond to a list index that exists in the data parameter
+#	data:  The data source to check.  Should ideally be a list containing dictionaries or other objects with named fields (should hypothetically work with a Django queryset too).
+def check_relay(id, data):
+	try:
+		# Step 1:  id is probably a string, so let's find out if it's a valid integer
+		id_int = int(id)
+		
+		# Step 2:  Find out if id is a valid list index, and grab the data item if possible
+		data_item = data[id_int]
+		
+		# Step 3:  Check whether the important fields exist
+		check_port = data['port']
+		check_cmd1 = data['command1']
+		check_cmd2 = data['command2']
+		
+		# Step 4:  Validation of data fields can go here; for now, we're done unless there was an exception.
+		
+		# If we're here, there were no exceptions thrown, which means this is a valid id and data set.
+		return True
+	
+	except (ValueError, TypeError, KeyError, IndexError) as e:
+		# The prior steps in this function throw intentional exceptions
+		# If any of them are thrown, return False, because the parameters are invalid for the other functions
+		return False
 
+# Shortcut to extract and standardize the required data fields
+def get_relay_fields(data_item):
+	data_name = data_item.get('name', 'Relay %i' % id_int)
+	data_port = data_item.get('port', False)
+	data_cmd1 = data_item.get('command1', False)
+	data_cmd2 = data_item.get('command2', False)
+	data_delay = data_item.get('delay', command_delay)
+	
+	return (data_name, data_port, data_cmd1, data_cmd2, data_delay)
+
+# Get the relevant fields of a specified relay in the data source
+# This function assumes you have already run check_relay(), or are otherwise confident that the data is valid
+def get_relay(id, data):
+	id_int = int(id)
+	data_item = data[id_int]
+	
+	return get_relay_fields(data_item)
 
 
 
