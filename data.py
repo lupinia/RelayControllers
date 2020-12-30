@@ -3,9 +3,6 @@
 #	By Kjatar Tavishen and Natasha L.
 #	github.com/kjatar | github.com/lupinia | www.lupinia.net
 
-#	Default delay between commands
-command_delay = 0.25
-
 #	List of dictionaries, in lieu of a database source
 #	Reference using the list index, starting with 1
 #		Example:  relays[1].get('port', False)

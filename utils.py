@@ -3,7 +3,7 @@
 #	By Kjatar Tavishen and Natasha L.
 #	github.com/kjatar | github.com/lupinia | www.lupinia.net
 
-from data import command_delay
+import settings
 
 import serial
 import sys
@@ -14,15 +14,15 @@ from time import sleep
 # Returns a serial.Serial() object after the settings have been applied
 def get_serial_interface():
 	ser = serial.Serial()
-	ser.baudrate = 9600
-	ser.bytesize = serial.EIGHTBITS #number of bits per bytes
-	ser.parity = serial.PARITY_NONE #set parity check: no parity
-	ser.stopbits = serial.STOPBITS_ONE #number of stop bits
-	ser.timeout = 2            #timeout block read
-	ser.xonxoff = False     #disable software flow control
-	ser.rtscts = False     #disable hardware (RTS/CTS) flow control
-	ser.dsrdtr = False       #disable hardware (DSR/DTR) flow control
-	ser.writeTimeout = 2 #timeout for write
+	ser.baudrate = settings.baudrate
+	ser.bytesize = settings.bytesize			#number of bits per bytes
+	ser.parity = settings.parity				#set parity check: no parity
+	ser.stopbits = settings.stopbits			#number of stop bits
+	ser.timeout = settings.timeout				#timeout block read
+	ser.xonxoff = settings.xonxoff				#disable software flow control
+	ser.rtscts = settings.rtscts				#disable hardware (RTS/CTS) flow control
+	ser.dsrdtr = settings.dsrdtr				#disable hardware (DSR/DTR) flow control
+	ser.writeTimeout = settings.writeTimeout	#timeout for write
 	
 	return ser
 
@@ -33,7 +33,7 @@ def get_serial_interface():
 #	command2:  The second command to send, after the delay
 #	serial_obj:  If the serial port is already open (such as for bulk operations), pass it here to avoid reinitialization
 #	delay:  Use this parameter to override the default delay between command1 and command2
-def relay_command(port, command1, command2, serial_obj=False, delay=command_delay):
+def relay_command(port, command1, command2, serial_obj=False, delay=settings.command_delay):
 	success = False		# Primary return value; True if everything worked
 	error = ''			# Secondary return value, provide info if success == False
 	close_when_complete = False
@@ -44,7 +44,6 @@ def relay_command(port, command1, command2, serial_obj=False, delay=command_dela
 		if not serial_obj:
 			# If there's already a serial interface in use, it can be passed to this function
 			# If not, we'll create our own
-			# NOTE: If the serial interface needs to be closed manually, add a variable to do that!
 			serial_obj = get_serial_interface()
 			close_when_complete = True
 		
@@ -107,7 +106,7 @@ def get_relay_fields(data_item):
 	data_port = data_item.get('port', False)
 	data_cmd1 = data_item.get('command1', False)
 	data_cmd2 = data_item.get('command2', False)
-	data_delay = data_item.get('delay', command_delay)
+	data_delay = data_item.get('delay', settings.command_delay)
 	
 	return (data_name, data_port, data_cmd1, data_cmd2, data_delay)
 
@@ -123,7 +122,7 @@ def get_relay(id, data):
 # Parameters:
 #	test_delay:  Amount of time to wait before proceeding to the next relay.  Uses the system default if not specified
 #	live_status:  If True, print the name of each relay as it comes up in the test
-def test_all_relays(live_status=True, test_delay=command_delay):
+def test_all_relays(live_status=True, test_delay=settings.command_delay):
 	from data import relays
 	test_output('Beginning test of all relays...', live_status)
 	
