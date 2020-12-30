@@ -1,0 +1,11 @@
+#	BloodLights Relay Controllers
+#	By Kjatar Tavishen and Natasha L.
+#	github.com/kjatar | github.com/lupinia | www.lupinia.net
+#	
+#	=================
+#	Python Requirements and Dependencies
+#	This list was manually assembled
+#	=================
+pyserial
+#	Recommended for dev
+ipython
