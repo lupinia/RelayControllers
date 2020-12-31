@@ -72,12 +72,34 @@ def relay_command(port, command1, command2, serial_obj=False, delay=settings.com
 	
 	return (success, error)
 
+# Check whether a specific relay dictionary is valid
+# Useful alternative to check_relay_source for 
+# Returns True if relay exists and has valid data, False otherwise
+# Parameters:
+#	id:  The ID of the relay to check.  Should cast to an integer, and correspond to a list index that exists in the data parameter
+#	data:  The data source to check.  Should ideally be a list containing dictionaries or other objects with named fields (should hypothetically work with a Django queryset too).
+def check_relay(data_item):
+	try:
+		# Step 1:  Check whether the important fields exist
+		check_port = data_item['port']
+		check_cmd1 = data_item['command1']
+		check_cmd2 = data_item['command2']
+		
+		# Step 2:  Validation of data fields can go here; for now, we're done unless there was an exception.
+		
+		return True
+	
+	except (ValueError, TypeError, KeyError, IndexError) as e:
+		# The prior steps in this function throw intentional exceptions
+		# If any of them are thrown, return False, because the parameters are invalid for the other functions
+		return False
+
 # Check whether the data for a specified relay exists in the data source
 # Returns True if relay exists and has valid data, False otherwise
 # Parameters:
 #	id:  The ID of the relay to check.  Should cast to an integer, and correspond to a list index that exists in the data parameter
 #	data:  The data source to check.  Should ideally be a list containing dictionaries or other objects with named fields (should hypothetically work with a Django queryset too).
-def check_relay(id, data):
+def check_relay_source(id, data):
 	try:
 		# Step 1:  id is probably a string, so let's find out if it's a valid integer
 		id_int = int(id)
@@ -85,15 +107,12 @@ def check_relay(id, data):
 		# Step 2:  Find out if id is a valid list index, and grab the data item if possible
 		data_item = data[id_int]
 		
-		# Step 3:  Check whether the important fields exist
-		check_port = data['port']
-		check_cmd1 = data['command1']
-		check_cmd2 = data['command2']
-		
-		# Step 4:  Validation of data fields can go here; for now, we're done unless there was an exception.
-		
-		# If we're here, there were no exceptions thrown, which means this is a valid id and data set.
-		return True
+		# If we're here, there were no exceptions thrown, which means this is a valid id.
+		# Offload the rest to check_relay()
+		if check_relay(data_item):
+			return True
+		else:
+			return False
 	
 	except (ValueError, TypeError, KeyError, IndexError) as e:
 		# The prior steps in this function throw intentional exceptions
