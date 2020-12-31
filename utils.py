@@ -14,15 +14,15 @@ from time import sleep
 # Returns a serial.Serial() object after the settings have been applied
 def get_serial_interface():
 	ser = serial.Serial()
-	ser.baudrate = settings.baudrate
-	ser.bytesize = settings.bytesize			#number of bits per bytes
-	ser.parity = settings.parity				#set parity check: no parity
-	ser.stopbits = settings.stopbits			#number of stop bits
-	ser.timeout = settings.timeout				#timeout block read
-	ser.xonxoff = settings.xonxoff				#disable software flow control
-	ser.rtscts = settings.rtscts				#disable hardware (RTS/CTS) flow control
-	ser.dsrdtr = settings.dsrdtr				#disable hardware (DSR/DTR) flow control
-	ser.writeTimeout = settings.writeTimeout	#timeout for write
+	ser.baudrate = settings.serial_baudrate
+	ser.bytesize = settings.serial_bytesize			#number of bits per bytes
+	ser.parity = settings.serial_parity				#set parity check: no parity
+	ser.stopbits = settings.serial_stopbits			#number of stop bits
+	ser.timeout = settings.serial_timeout				#timeout block read
+	ser.xonxoff = settings.serial_xonxoff				#disable software flow control
+	ser.rtscts = settings.serial_rtscts				#disable hardware (RTS/CTS) flow control
+	ser.dsrdtr = settings.serial_dsrdtr				#disable hardware (DSR/DTR) flow control
+	ser.writeTimeout = settings.serial_writeTimeout	#timeout for write
 	
 	return ser
 
